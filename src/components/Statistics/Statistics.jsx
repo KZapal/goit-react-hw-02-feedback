@@ -1,7 +1,15 @@
 // import PropTypes from 'prop-types';
 import css from './Statistics.module.css';
 
-const Statistics = ({ options, onLeaveFeedback, good, neutral, bad }) => {
+const Statistics = ({
+  options,
+  onLeaveFeedback,
+  good,
+  neutral,
+  bad,
+  total,
+  positivePercentage,
+}) => {
   return (
     <div className={css.window}>
       <p className={css.mainP}>Please leave feedback</p>
@@ -24,6 +32,8 @@ const Statistics = ({ options, onLeaveFeedback, good, neutral, bad }) => {
         <li>Good: {good}</li>
         <li>Neutral: {neutral}</li>
         <li>Bad: {bad}</li>
+        <li>Total: {total}</li>
+        <li>Positive Percentage: {positivePercentage} %</li>
       </ul>
     </div>
   );

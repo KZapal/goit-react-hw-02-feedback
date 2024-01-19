@@ -14,6 +14,15 @@ class App extends React.Component {
     }));
   };
 
+  countTotalFeedback() {
+    const { good, neutral, bad } = this.state;
+    return good + neutral + bad;
+  }
+
+  countPostitiveFeedbackPercentage() {
+    return Math.round((this.state.good / this.countTotalFeedback()) * 100);
+  }
+
   render() {
     const { good, neutral, bad } = this.state;
     const options = Object.keys(this.state);
@@ -25,6 +34,8 @@ class App extends React.Component {
         good={good}
         neutral={neutral}
         bad={bad}
+        total={this.countTotalFeedback()}
+        positivePercentage={this.countPostitiveFeedbackPercentage()}
       />
     );
   }
