@@ -1,42 +1,28 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import css from './Statistics.module.css';
 
-const Statistics = ({
-  options,
-  onLeaveFeedback,
-  good,
-  neutral,
-  bad,
-  total,
-  positivePercentage,
-}) => {
+const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
   return (
-    <div className={css.window}>
-      <p className={css.mainP}>Please leave feedback</p>
-      <div className={css.feedbackButtons}>
-        {options.map(option => {
-          return (
-            <button
-              className={css.btn}
-              type="button"
-              onClick={() => onLeaveFeedback(option)}
-              key={option}
-            >
-              {option}
-            </button>
-          );
-        })}
-      </div>
-      <p className={css.mainP}>Statistics</p>
+    <div>
       <ul className={css.statistics}>
-        <li>Good: {good}</li>
-        <li>Neutral: {neutral}</li>
-        <li>Bad: {bad}</li>
-        <li>Total: {total}</li>
-        <li>Positive Percentage: {positivePercentage} %</li>
+        <li className={css.statisticsListItem}>Good: {good}</li>
+        <li className={css.statisticsListItem}>Neutral: {neutral}</li>
+        <li className={css.statisticsListItem}>Bad: {bad}</li>
+        <li className={css.statisticsListItem}>Total: {total}</li>
+        <li className={css.statisticsListItem}>
+          Positive feedback: {positivePercentage} %
+        </li>
       </ul>
     </div>
   );
+};
+
+Statistics.propTypes = {
+  good: PropTypes.number,
+  neutral: PropTypes.number,
+  bad: PropTypes.number,
+  total: PropTypes.number,
+  positivePercentage: PropTypes.number,
 };
 
 export default Statistics;
